@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'sorter'
+
 urlpatterns = [
-  path('', views.top_page, name='top_page'),
+  path('', views.TopView.as_view(), name='top_page'),
 ]
