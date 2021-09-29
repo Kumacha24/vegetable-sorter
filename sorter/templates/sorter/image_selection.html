@@ -1,27 +1,23 @@
 {% extends 'sorter/base.html' %}
-
 {% load static %}
 
-{% block title %}Vegetable Sorter | 画像選択ページ{% endblock %}
+{% block title %}Vegetable sorter | 画像アップロード{% endblock %}
 
 {% block header %}
-
-<header class="masthead bg-primary text-white text-center">
+<header class="masthead text-black text-center">
   <div class="container d-flex align-items-center flex-column">
-      <!-- Masthead Avatar Image-->
-      <img class="masthead-avatar mb-5" src="{% static 'assets/img/avataaars.svg' %}" alt="..." />
-      <!-- Masthead Heading-->
-      <h1 class="masthead-heading text-uppercase mb-0">Vegetable Sorter</h1>
-      <!-- Icon Divider-->
-      <div class="divider-custom divider-light">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-          <div class="divider-custom-line"></div>
+    <div class="row">
+      <div class="my-div-style w-100">
+        <h1>識別したい野菜の画像を選択してください</h1>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <table class="table">
+            {{ form.as_table }}
+          </table>
+          <button type="submit" class="btn btn-primary">この画像を識別する！</button>
+        </form>
       </div>
-      <!-- Masthead Subheading-->
-      <p class="masthead-subheading font-weight-light mb-0">貴方が撮影した野菜の画像に写っている野菜を</p>
-      <p class="masthead-subheading font-weight-light mb-0">人工知能が識別して情報を表示してくれます</p>
-      <a href="#" class="btn btn-primary btn-xl rounded-pil mt-5">早速はじめてみる！</a>
+    </div>
   </div>
 </header>
 

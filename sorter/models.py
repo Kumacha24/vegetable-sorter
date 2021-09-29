@@ -7,3 +7,6 @@ from django.db import models
 # Create your models here.
 class Post(models.Model):
   pass
+
+class UserImage(models.Model):
+  image = models.ImageField(verbose_name='画像', upload_to='images/')

@@ -7,3 +7,7 @@ body, #wraper {
 footer {
   margin-top: auto;
 }
+
+.my-block {
+  padding-top: 800px;
+}
