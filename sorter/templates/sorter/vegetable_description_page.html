@@ -1,18 +1,29 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>野菜識別システム|{{ label }}の説明ページ</title>
-</head>
-<body>
-  <h1>野菜の画像認識システム</h1>
-  <h2>あなたが選んだ写真に写っていると思われる野菜は{{ label }}です！</h2>
-  <img src="{{ object.image.url }}" alt="">
-  <p>この野菜についての簡単な情報</p>
+{% extends 'sorter/base.html' %}
 
-  <p>{{ label }}レシピで検索するためのボタン</p>
-  <p>トップページに戻るボタン</p>
-</body>
-</html>
+{% load static %}
+
+{% block title %}野菜識別システム|{{ label }}の説明ページ{% endblock %}
+
+{% block header %}
+
+<header class="masthead bg-primary text-white text-center">
+  <div class="container d-flex align-items-center flex-column">
+      <!-- Masthead Heading-->
+      <h1 class="masthead-heading text-uppercase mb-0">人工知能の識別結果！</h1>
+      <!-- Icon Divider-->
+      <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+      </div>
+      <!-- Masthead Subheading-->
+      <p class="masthead-subheading font-weight-light mb-0">あなたが選んだ写真に写っていると思われる野菜は<strong>{{ label }}</strong>です！</p>
+      <img class="masthead-avatar mb-5" src="{{ object.image.url }}" alt="">
+      <p class="masthead-subheading font-weight-light mb-0">この野菜についての簡単な情報</p>
+      <a href="{% url 'sorter:top_page' %}" class="btn btn-success btn-xl rounded-pil mt-5">トップページに戻る</a>
+      <a href="{{ recipe_url }}" class="btn btn-success btn-xl rounded-pil mt-5">{{ label }}を使ったレシピを調べてみる</a>
+      <a href="{{ search_url }}" class="btn btn-success btn-xl rounded-pil mt-5">{{ label }}についての詳しい情報を見てみる</a>
+  </div>
+</header>
+
+{% endblock %}

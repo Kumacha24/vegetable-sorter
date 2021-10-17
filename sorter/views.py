@@ -24,6 +24,8 @@ class ResultView(generic.DetailView):
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
       uploaded_image = self.object.image
-      label = predict_image(uploaded_image)
+      label, search_url, recipe_url = predict_image(uploaded_image)
       context['label'] = label
+      context['search_url'] = search_url
+      context['recipe_url'] = recipe_url
       return context
