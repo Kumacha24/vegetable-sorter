@@ -1,12 +1,21 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.views import generic
 from django.urls import reverse_lazy, reverse
 from .models import UserImage
 from .forms import UploadImageForm
 from static.python.machinelearning_model import predict_image
 
+import os
+
 class TopView(generic.TemplateView):
   template_name = "sorter/top_page.html"
+  # トップページに戻ると写真を削除するようにしたい
+  models = UserImage.objects.all()
+  for object in models:
+    os.remove('media/' + str(object.image))
+    object.delete()
+
 
 class SelectView(generic.CreateView):
   model = UserImage
